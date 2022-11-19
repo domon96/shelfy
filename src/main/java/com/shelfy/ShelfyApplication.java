@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
 @SpringBootApplication
 public class ShelfyApplication {
@@ -62,9 +62,9 @@ public class ShelfyApplication {
         productService.addProduct("pasta", 30, grainProducts);
         productService.addProduct("rice", 30, grainProducts);
 
-        itemService.addItem(1, Instant.parse("2022-11-30T18:35:24.00Z"), "Milk \"Prosto od krowy\"", 1);
-        itemService.addItem(10, Instant.parse("2022-11-27T18:35:24.00Z"), "Banana from abu zabi", 1);
-        itemService.addItem(18, Instant.parse("2023-03-12T18:35:24.00Z"), "Brown rice", 4);
+        itemService.addItem(1, LocalDate.now(), "Milk \"Prosto od krowy\"", 1);
+        itemService.addItem(10, LocalDate.now(), "Banana from abu zabi", 1);
+        itemService.addItem(18, LocalDate.now(), "Brown rice", 4);
     }
 
 }

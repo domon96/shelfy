@@ -6,7 +6,7 @@ import com.shelfy.repository.ItemRepository;
 import com.shelfy.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +27,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item addItem(int productId, Instant date, String description, int count) {
+    public Item addItem(int productId, LocalDate date, String description, int count) {
         final Optional<Product> product = productRepository.findById(productId);
         if (product.isEmpty()) {
             throw new IllegalArgumentException("Product with id " + productId + " doesnt exist");
