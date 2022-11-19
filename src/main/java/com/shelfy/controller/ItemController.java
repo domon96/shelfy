@@ -18,7 +18,7 @@ public class ItemController {
 
     @RequestMapping("/getItems")
     @GetMapping
-    public List<Item> getItems() {
+    public List<ItemDto> getItems() {
         return itemService.getItems();
     }
 

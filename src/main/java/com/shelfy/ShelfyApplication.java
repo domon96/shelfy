@@ -62,9 +62,9 @@ public class ShelfyApplication {
         productService.addProduct("pasta", 30, grainProducts);
         productService.addProduct("rice", 30, grainProducts);
 
-        itemService.addItem(1, LocalDate.parse("2022-11-27"), "Milk \"Prosto od krowy\"", 1);
+        itemService.addItem(1, LocalDate.parse("2022-11-17"), "Milk \"Prosto od krowy\"", 1);
         itemService.addItem(18, LocalDate.parse("2023-06-20"), "Brown rice", 4);
-        itemService.addItem(10, LocalDate.parse("2022-11-24"), "Banana from abu zabi", 1);
+        itemService.addItem(10, LocalDate.parse("2022-11-20"), "Banana from abu zabi", 1);
     }
 
 }
