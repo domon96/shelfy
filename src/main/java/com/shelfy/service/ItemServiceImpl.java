@@ -28,4 +28,9 @@ public class ItemServiceImpl implements ItemService {
         }
         return itemRepository.save(new Item(product.get(), date, description, count));
     }
+
+    @Override
+    public void removeItem(int id) {
+        itemRepository.deleteById(id);
+    }
 }
