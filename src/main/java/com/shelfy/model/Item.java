@@ -15,7 +15,7 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @ManyToOne
-    @JoinColumn(name = "product_name")
+    @JoinColumn(name = "product_id")
     private Product product;
     private Instant expirationDate;
     private String description;
@@ -26,6 +26,10 @@ public class Item {
         this.expirationDate=expirationDate;
         this.description=description;
         this.count=count;
+    }
+
+    public Item() {
+
     }
 
     public int getId() {
