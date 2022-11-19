@@ -8,5 +8,8 @@ package com.shelfy.repository;
 import com.shelfy.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductRepository extends JpaRepository<Integer, Product> {
+import java.util.List;
+
+public interface ProductRepository extends JpaRepository<Product, Integer> {
+    List<Product> findByCategory(int categoryId);
 }
