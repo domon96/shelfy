@@ -1,8 +1,3 @@
-/*
- * Copyright (C) Motorola Solutions, INC.
- * All Rights Reserved.
- */
-
 package com.shelfy.model;
 
 import javax.persistence.*;
