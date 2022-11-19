@@ -1,7 +1,6 @@
 package com.shelfy.controller;
 
 import com.shelfy.model.Category;
-import com.shelfy.model.Product;
 import com.shelfy.service.CategoryService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,5 +21,11 @@ public class CategoryController {
     @GetMapping
     public List<Category> getProducts() {
         return categoryService.getCategories();
+    }
+
+    @RequestMapping("/addCategory/{name}")
+    @GetMapping
+    public Category addCategory(@PathVariable String name) {
+        return categoryService.addCategory(name);
     }
 }
