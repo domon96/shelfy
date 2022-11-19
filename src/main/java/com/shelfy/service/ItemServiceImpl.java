@@ -32,7 +32,7 @@ public class ItemServiceImpl implements ItemService {
                 .map(item -> {
                     final FOOD_STATUS foodStatus;
                     final LocalDate today = LocalDate.now();
-                    long differenceInDays = ChronoUnit.DAYS.between(item.getExpirationDate(), today);
+                    long differenceInDays = ChronoUnit.DAYS.between(today, item.getExpirationDate());
                     if (differenceInDays < 0) foodStatus = FOOD_STATUS.EXPIRED;
                     else if (differenceInDays < 2) foodStatus = FOOD_STATUS.ALMOST_EXPIRED;
                     else if (differenceInDays < 4) foodStatus = FOOD_STATUS.EXPIRING;
