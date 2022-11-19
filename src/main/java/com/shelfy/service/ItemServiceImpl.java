@@ -1,6 +1,8 @@
 package com.shelfy.service;
 
+import com.shelfy.model.FOOD_STATUS;
 import com.shelfy.model.Item;
+import com.shelfy.model.ItemDto;
 import com.shelfy.model.Product;
 import com.shelfy.repository.ItemRepository;
 import com.shelfy.repository.ProductRepository;
@@ -22,8 +24,16 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<Item> getItems() {
-        return itemRepository.findByOrderByExpirationDate();
+    public List<ItemDto> getItems() {
+        return itemRepository.findByOrderByExpirationDate()
+                .stream()
+                .map(item -> {
+                    final FOOD_STATUS foodStatus;
+                    switch (item.getExpirationDate()){
+
+                    }
+                    new ItemDto(item.getProduct().getId(), item.getExpirationDate(), item.getDescription(), )
+                })
     }
 
     @Override

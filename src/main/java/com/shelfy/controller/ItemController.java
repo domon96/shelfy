@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping(name = "/api")
 public class ItemController {
     private final ItemService itemService;
 
@@ -17,7 +18,7 @@ public class ItemController {
 
     @RequestMapping("/getItems")
     @GetMapping
-    public List<Item> getItems() {
+    public List<ItemDto> getItems() {
         return itemService.getItems();
     }
 
