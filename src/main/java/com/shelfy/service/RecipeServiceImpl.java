@@ -46,8 +46,8 @@ public class RecipeServiceImpl implements RecipeService {
     private URI getUri(String ingredients) {
         return URI.create(URL +
                 "?apiKey=" + apiKey +
-                "?ingredients" + ingredients +
-                "?number=3" +
-                "sort=max-used-ingredients");
+                "&ingredients=" + ingredients +
+                "&number=3" +
+                "&sort=max-used-ingredients");
     }
 }
