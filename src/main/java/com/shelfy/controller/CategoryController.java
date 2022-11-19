@@ -19,7 +19,7 @@ public class CategoryController {
 
     @RequestMapping("/getCategories")
     @GetMapping
-    public List<Category> getProducts() {
+    public List<Category> getCategories() {
         return categoryService.getCategories();
     }
 
