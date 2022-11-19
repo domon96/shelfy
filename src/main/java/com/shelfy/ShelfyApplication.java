@@ -1,5 +1,6 @@
 package com.shelfy;
 
+import com.shelfy.configuration.WebMvcConfiguration;
 import com.shelfy.model.Category;
 import com.shelfy.service.CategoryService;
 import com.shelfy.service.ItemService;
@@ -7,12 +8,13 @@ import com.shelfy.service.ProductService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.event.EventListener;
 
 import java.time.LocalDate;
 
 @SpringBootApplication
+@EnableConfigurationProperties(WebMvcConfiguration.class)
 public class ShelfyApplication {
 
     private final CategoryService categoryService;
