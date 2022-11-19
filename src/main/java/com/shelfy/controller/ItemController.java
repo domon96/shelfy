@@ -1,6 +1,7 @@
 package com.shelfy.controller;
 
 import com.shelfy.model.Item;
+import com.shelfy.model.ItemDto;
 import com.shelfy.service.ItemService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,7 @@ public class ItemController {
 
     @RequestMapping("/addItem")
     @PostMapping
-    public Item addItem(@RequestBody int productId, @RequestBody Instant date, @RequestBody String description, @RequestBody int count) {
-        return itemService.addItem(productId, date, description, count);
+    public Item addItem(@RequestBody ItemDto itemDto) {
+        return itemService.addItem(itemDto.productId(), itemDto.date(), itemDto.description(), itemDto.count());
     }
 }
