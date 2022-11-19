@@ -17,9 +17,9 @@ public class AlmostEpiredFoodScheduler {
     }
 
     @Scheduled(fixedRate = 1L, timeUnit = TimeUnit.DAYS)
-    public void findAlmostExpiredItems(){
-        for(ItemDto itemDto : itemService.getItems()){
-           if(itemDto.foodStatus() == FOOD_STATUS.ALMOST_EXPIRED){
+    public void findAlmostExpiredItems() {
+        for (ItemDto itemDto : itemService.getItems()) {
+            if (itemDto.foodStatus() == FOOD_STATUS.ALMOST_EXPIRED) {
                 //send email
             }
         }
