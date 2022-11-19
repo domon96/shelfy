@@ -12,7 +12,11 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
+    private final String name;
+
+    public Category(String name){
+        this.name = name;
+    }
 
     public Category() {
     }

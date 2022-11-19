@@ -21,4 +21,10 @@ public class CategoryController {
     public List<Category> getProducts() {
         return categoryService.getCategories();
     }
+
+    @RequestMapping("/addCategory/{name}")
+    @GetMapping
+    public Category addCategory(@PathVariable String name) {
+        return categoryService.addCategory(name);
+    }
 }
