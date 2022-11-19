@@ -21,6 +21,13 @@ public class Item {
     private String description;
     private int count;
 
+    public Item(Product product, Instant expirationDate, String description, int count){
+        this.product=product;
+        this.expirationDate=expirationDate;
+        this.description=description;
+        this.count=count;
+    }
+
     public int getId() {
         return id;
     }

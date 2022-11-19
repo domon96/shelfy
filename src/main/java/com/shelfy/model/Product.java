@@ -15,6 +15,15 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    public Product() {
+    }
+
+    public Product(String name, int validDays, Category category) {
+        this.name = name;
+        this.validDays = validDays;
+        this.category = category;
+    }
+
     public int getId() {
         return id;
     }
