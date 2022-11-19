@@ -9,8 +9,10 @@ import com.shelfy.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -29,11 +31,15 @@ public class ItemServiceImpl implements ItemService {
                 .stream()
                 .map(item -> {
                     final FOOD_STATUS foodStatus;
-                    switch (item.getExpirationDate()){
-
-                    }
-                    new ItemDto(item.getProduct().getId(), item.getExpirationDate(), item.getDescription(), )
+                    final LocalDate today = LocalDate.now();
+                    long differenceInDays = ChronoUnit.DAYS.between(item.getExpirationDate(), today);
+                    if (differenceInDays < 0) foodStatus = FOOD_STATUS.EXPIRED;
+                    else if (differenceInDays < 2) foodStatus = FOOD_STATUS.ALMOST_EXPIRED;
+                    else if (differenceInDays < 4) foodStatus = FOOD_STATUS.EXPIRING;
+                    else foodStatus = FOOD_STATUS.FRESH;
+                    return new ItemDto(item.getProduct().getId(), item.getExpirationDate(), item.getDescription(), item.getCount(), foodStatus);
                 })
+                .collect(Collectors.toList());
     }
 
     @Override
