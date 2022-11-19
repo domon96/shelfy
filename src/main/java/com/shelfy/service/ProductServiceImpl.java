@@ -1,12 +1,11 @@
 package com.shelfy.service;
 
-import com.shelfy.model.Category;
 import com.shelfy.model.Product;
 
 import java.time.Instant;
 import java.util.List;
 
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getProductsByCategory(int id) {
         return List.of();
