@@ -1,11 +1,9 @@
 package com.shelfy.controller;
 
 import com.shelfy.model.Category;
+import com.shelfy.model.CategoryDto;
 import com.shelfy.service.CategoryService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,9 +21,9 @@ public class CategoryController {
         return categoryService.getCategories();
     }
 
-    @RequestMapping("/addCategory/{name}")
-    @GetMapping
-    public Category addCategory(@PathVariable String name) {
-        return categoryService.addCategory(name);
+    @RequestMapping("/addCategory")
+    @PostMapping
+    public Category addCategory(@RequestBody CategoryDto categoryDto) {
+        return categoryService.addCategory(categoryDto.name());
     }
 }
