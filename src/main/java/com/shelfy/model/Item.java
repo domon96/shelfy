@@ -1,12 +1,7 @@
 package com.shelfy.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.time.Instant;
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -17,15 +12,15 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
-    private Instant expirationDate;
+    private LocalDate expirationDate;
     private String description;
     private int count;
 
-    public Item(Product product, Instant expirationDate, String description, int count){
-        this.product=product;
-        this.expirationDate=expirationDate;
-        this.description=description;
-        this.count=count;
+    public Item(Product product, LocalDate expirationDate, String description, int count) {
+        this.product = product;
+        this.expirationDate = expirationDate;
+        this.description = description;
+        this.count = count;
     }
 
     public Item() {
@@ -40,7 +35,7 @@ public class Item {
         return product;
     }
 
-    public Instant getExpirationDate() {
+    public LocalDate getExpirationDate() {
         return expirationDate;
     }
 

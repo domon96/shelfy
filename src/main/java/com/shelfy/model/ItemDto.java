@@ -1,6 +1,6 @@
 package com.shelfy.model;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
-public record ItemDto(int productId, Instant date, String description, int count) {
+public record ItemDto(int productId, LocalDate date, String description, int count) {
 }
