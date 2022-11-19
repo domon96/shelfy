@@ -23,7 +23,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<Item> getItems() {
-        return itemRepository.findAll();
+        return itemRepository.findByOrderByExpirationDate();
     }
 
     @Override
