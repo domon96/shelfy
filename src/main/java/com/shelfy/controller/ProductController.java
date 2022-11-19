@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping(path = "/api")
+@CrossOrigin
 public class ProductController {
     private final ProductService productService;
     private final CategoryService categoryService;
