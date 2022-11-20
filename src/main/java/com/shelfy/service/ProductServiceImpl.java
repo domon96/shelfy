@@ -6,6 +6,7 @@ import com.shelfy.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -16,6 +17,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product getProduct(int id) {
+        Optional<Product> optionalProduct = productRepository.findById(id);
+        if(optionalProduct.isEmpty()){
+            throw new IllegalArgumentException("Product id doesnt exist");
+        }
+        return optionalProduct.get();
+    }
+
+    @Override
     public List<Product> getProductsByCategory(int categoryId) {
         return productRepository.findByCategory(categoryId);
     }
@@ -23,9 +33,5 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product addProduct(String name, int validDays, Category category) {
         return productRepository.save(new Product(name, validDays, category));
-    }
-
-    @Override
-    public void removeProduct(int id) {
     }
 }

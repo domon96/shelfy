@@ -1,8 +1,9 @@
 package com.shelfy.controller;
 
 import com.shelfy.model.Item;
-import com.shelfy.model.ItemDto;
+import com.shelfy.model.dto.ItemDto;
 import com.shelfy.service.ItemService;
+import com.shelfy.service.ProductStatisticsService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,9 +13,11 @@ import java.util.List;
 @CrossOrigin
 public class ItemController {
     private final ItemService itemService;
+    private final ProductStatisticsService productStatisticsService;
 
-    public ItemController(ItemService itemService) {
+    public ItemController(ItemService itemService, ProductStatisticsService productStatisticsService) {
         this.itemService = itemService;
+        this.productStatisticsService = productStatisticsService;
     }
 
     @RequestMapping("/getItems")
@@ -32,8 +35,7 @@ public class ItemController {
     @RequestMapping("/removeItem")
     @PutMapping
     public void removeItem(@RequestBody ItemDto itemDto, @RequestParam boolean wasEaten) {
-        // zapis do nowej bazy danych
-        // productStatisticsService.add();
-        itemService.removeItems(itemDto);
+        final int itemsToRemove = itemService.removeItems(itemDto);
+        productStatisticsService.addProductStatistic(itemDto, wasEaten, itemsToRemove);
     }
 }
