@@ -11,5 +11,5 @@ public interface ItemService {
 
     Item addItem(int productId, LocalDate date, String description, int count);
 
-    void removeItem(int id);
+    int removeItems(ItemDto itemDto);
 }
