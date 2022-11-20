@@ -33,7 +33,7 @@ public class ItemController {
     }
 
     @RequestMapping("/removeItem")
-    @PutMapping
+    @PostMapping
     public void removeItem(@RequestBody ItemDto itemDto, @RequestParam boolean wasEaten) {
         final int itemsToRemove = itemService.removeItems(itemDto);
         productStatisticsService.addProductStatistics(itemDto, wasEaten, itemsToRemove);
