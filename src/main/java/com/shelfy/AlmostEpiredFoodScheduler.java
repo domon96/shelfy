@@ -1,6 +1,6 @@
 package com.shelfy;
 
-import com.shelfy.model.FOOD_STATUS;
+import com.shelfy.model.FoodStatus;
 import com.shelfy.model.ItemDto;
 import com.shelfy.service.ItemService;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -19,7 +19,7 @@ public class AlmostEpiredFoodScheduler {
     @Scheduled(fixedRate = 1L, timeUnit = TimeUnit.DAYS)
     public void findAlmostExpiredItems() {
         for (ItemDto itemDto : itemService.getItems()) {
-            if (itemDto.foodStatus() == FOOD_STATUS.ALMOST_EXPIRED) {
+            if (itemDto.foodStatus() == FoodStatus.ALMOST_EXPIRED) {
                 //send email
             }
         }

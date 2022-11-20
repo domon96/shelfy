@@ -29,9 +29,11 @@ public class ItemController {
         return itemService.addItem(itemDto.productId(), itemDto.date(), itemDto.description(), itemDto.count());
     }
 
-    @RequestMapping("/removeItem/{id}")
-    @DeleteMapping
-    public void removeItem(@PathVariable int id) {
-        itemService.removeItem(id);
+    @RequestMapping("/removeItem")
+    @PutMapping
+    public void removeItem(@RequestBody ItemDto itemDto, @RequestParam boolean wasEaten) {
+        // zapis do nowej bazy danych
+        // productStatisticsService.add();
+        itemService.removeItems(itemDto);
     }
 }

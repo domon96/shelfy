@@ -1,6 +1,6 @@
 package com.shelfy.model;
 
-public enum FOOD_STATUS {
+public enum FoodStatus {
     FRESH,
     EXPIRING,
     ALMOST_EXPIRED,
