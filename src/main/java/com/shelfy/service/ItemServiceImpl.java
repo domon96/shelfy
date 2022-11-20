@@ -37,7 +37,7 @@ public class ItemServiceImpl implements ItemService {
                     else if (differenceInDays < 2) foodStatus = FOOD_STATUS.ALMOST_EXPIRED;
                     else if (differenceInDays < 4) foodStatus = FOOD_STATUS.EXPIRING;
                     else foodStatus = FOOD_STATUS.FRESH;
-                    return new ItemDto(item.getId(), item.getProduct().getId(), item.getExpirationDate(), item.getDescription(), item.getCount(), foodStatus);
+                    return new ItemDto(item.getId(), item.getProduct().getId(), item.getProduct().getName(), item.getExpirationDate(), item.getDescription(), item.getCount(), foodStatus);
                 })
                 .collect(Collectors.toList());
     }
