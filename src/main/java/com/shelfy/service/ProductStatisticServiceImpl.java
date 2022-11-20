@@ -30,6 +30,6 @@ public class ProductStatisticServiceImpl implements ProductStatisticService{
 
     @Override
     public List<ProductStatistic> summarizeProductStatistic() {
-        return productStatisticRepository.findByGroupByProductId();
+        return null;
     }
 }
