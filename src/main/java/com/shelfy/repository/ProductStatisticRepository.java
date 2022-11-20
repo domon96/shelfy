@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ProductStatisticRepository extends JpaRepository<ProductStatistic, Integer> {
-    List<ProductStatistic> findByGroupByProductId();
+    
 }
