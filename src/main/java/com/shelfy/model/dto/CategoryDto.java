@@ -1,4 +1,4 @@
-package com.shelfy.model;
+package com.shelfy.model.dto;
 
 public record CategoryDto(String name) {
 }

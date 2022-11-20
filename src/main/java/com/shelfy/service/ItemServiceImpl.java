@@ -2,7 +2,7 @@ package com.shelfy.service;
 
 import com.shelfy.model.FOOD_STATUS;
 import com.shelfy.model.Item;
-import com.shelfy.model.ItemDto;
+import com.shelfy.model.dto.ItemDto;
 import com.shelfy.model.Product;
 import com.shelfy.repository.ItemRepository;
 import com.shelfy.repository.ProductRepository;

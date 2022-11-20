@@ -2,7 +2,7 @@ package com.shelfy.controller;
 
 import com.shelfy.model.Category;
 import com.shelfy.model.Product;
-import com.shelfy.model.ProductDto;
+import com.shelfy.model.dto.ProductDto;
 import com.shelfy.service.CategoryService;
 import com.shelfy.service.ProductService;
 import org.springframework.http.ResponseEntity;

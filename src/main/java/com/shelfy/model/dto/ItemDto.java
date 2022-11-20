@@ -1,5 +1,6 @@
-package com.shelfy.model;
+package com.shelfy.model.dto;
 
+import com.shelfy.model.FOOD_STATUS;
 import org.springframework.lang.Nullable;
 
 import java.time.LocalDate;

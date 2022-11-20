@@ -1,7 +1,7 @@
 package com.shelfy.controller;
 
 import com.shelfy.model.Item;
-import com.shelfy.model.ItemDto;
+import com.shelfy.model.dto.ItemDto;
 import com.shelfy.service.ItemService;
 import org.springframework.web.bind.annotation.*;
 
