@@ -16,6 +16,10 @@ public class Item {
     private String description;
     private int count;
 
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     public Item(Product product, LocalDate expirationDate, String description, int count) {
         this.product = product;
         this.expirationDate = expirationDate;

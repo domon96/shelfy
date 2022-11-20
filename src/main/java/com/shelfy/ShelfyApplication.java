@@ -1,13 +1,13 @@
 package com.shelfy;
 
 import com.shelfy.model.Category;
+import com.shelfy.model.dto.ItemDto;
 import com.shelfy.service.CategoryService;
 import com.shelfy.service.ItemService;
 import com.shelfy.service.ProductService;
-import com.shelfy.service.ProductStatisticService;
+import com.shelfy.service.ProductStatisticsService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
@@ -19,16 +19,16 @@ public class ShelfyApplication {
     private final CategoryService categoryService;
     private final ProductService productService;
     private final ItemService itemService;
-    private final ProductStatisticService productStatisticService;
+    private final ProductStatisticsService productStatisticsService;
 
     public ShelfyApplication(CategoryService categoryService,
                              ProductService productService,
                              ItemService itemService,
-                             ProductStatisticService productStatisticService) {
+                             ProductStatisticsService productStatisticsService) {
         this.categoryService = categoryService;
         this.productService = productService;
         this.itemService = itemService;
-        this.productStatisticService = productStatisticService;
+        this.productStatisticsService = productStatisticsService;
     }
 
     public static void main(String[] args) {
@@ -71,12 +71,12 @@ public class ShelfyApplication {
         itemService.addItem(18, LocalDate.parse("2023-06-20"), "Brown rice", 4);
         itemService.addItem(10, LocalDate.parse("2022-11-20"), "Banana from abu zabi", 1);
 
-        productStatisticService.addProductStatistic(1, 3, true);
-        productStatisticService.addProductStatistic(1, 2, true);
-        productStatisticService.addProductStatistic(1, 1, false);
-        productStatisticService.addProductStatistic(1, 6, false);
-        productStatisticService.addProductStatistic(2, 3, true);
-        productStatisticService.addProductStatistic(2, 2, true);
+        productStatisticsService.addProductStatistics(new ItemDto(null, 1, "milk", LocalDate.now(), "x", 10, null), true, 2);
+        productStatisticsService.addProductStatistics(new ItemDto(null, 1, "milk", LocalDate.now(), "x", 10, null), true, 1);
+        productStatisticsService.addProductStatistics(new ItemDto(null, 1, "milk", LocalDate.now(), "x", 10, null), false, 6);
+        productStatisticsService.addProductStatistics(new ItemDto(null, 1, "milk", LocalDate.now(), "x", 10, null), false, 3);
+        productStatisticsService.addProductStatistics(new ItemDto(null, 2, "cheese", LocalDate.now(), "xd", 5, null), true, 3);
+        productStatisticsService.addProductStatistics(new ItemDto(null, 2, "cheese", LocalDate.now(), "xd", 5, null), true, 2);
     }
 
 }

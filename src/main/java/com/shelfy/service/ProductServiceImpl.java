@@ -34,8 +34,4 @@ public class ProductServiceImpl implements ProductService {
     public Product addProduct(String name, int validDays, Category category) {
         return productRepository.save(new Product(name, validDays, category));
     }
-
-    @Override
-    public void removeProduct(int id) {
-    }
 }

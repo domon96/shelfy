@@ -1,16 +1,11 @@
 package com.shelfy.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-public class ProductStatistic {
+public class ProductStatistics {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -21,11 +16,10 @@ public class ProductStatistic {
     private int eatenQuantity;
     private LocalDate date;
 
-    public ProductStatistic(){
-
+    public ProductStatistics() {
     }
 
-    public ProductStatistic(Product product, int wastedQuantity, int eatenQuantity, LocalDate date) {
+    public ProductStatistics(Product product, int wastedQuantity, int eatenQuantity, LocalDate date) {
         this.product = product;
         this.wastedQuantity = wastedQuantity;
         this.eatenQuantity = eatenQuantity;
@@ -56,8 +50,8 @@ public class ProductStatistic {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        ProductStatistic productStatistic = (ProductStatistic) obj;
-        return id == productStatistic.id && product == productStatistic.product && wastedQuantity == productStatistic.wastedQuantity && eatenQuantity== productStatistic.eatenQuantity && date == productStatistic.date;
+        ProductStatistics productStatistic = (ProductStatistics) obj;
+        return id == productStatistic.id && product == productStatistic.product && wastedQuantity == productStatistic.wastedQuantity && eatenQuantity == productStatistic.eatenQuantity && date == productStatistic.date;
     }
 
     @Override

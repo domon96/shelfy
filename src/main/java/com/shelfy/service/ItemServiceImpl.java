@@ -1,9 +1,9 @@
 package com.shelfy.service;
 
-import com.shelfy.model.FOOD_STATUS;
+import com.shelfy.model.FoodStatus;
 import com.shelfy.model.Item;
-import com.shelfy.model.dto.ItemDto;
 import com.shelfy.model.Product;
+import com.shelfy.model.dto.ItemDto;
 import com.shelfy.repository.ItemRepository;
 import com.shelfy.repository.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -30,13 +30,13 @@ public class ItemServiceImpl implements ItemService {
         return itemRepository.findByOrderByExpirationDate()
                 .stream()
                 .map(item -> {
-                    final FOOD_STATUS foodStatus;
+                    final FoodStatus foodStatus;
                     final LocalDate today = LocalDate.now();
                     long differenceInDays = ChronoUnit.DAYS.between(today, item.getExpirationDate());
-                    if (differenceInDays < 0) foodStatus = FOOD_STATUS.EXPIRED;
-                    else if (differenceInDays < 2) foodStatus = FOOD_STATUS.ALMOST_EXPIRED;
-                    else if (differenceInDays < 4) foodStatus = FOOD_STATUS.EXPIRING;
-                    else foodStatus = FOOD_STATUS.FRESH;
+                    if (differenceInDays < 0) foodStatus = FoodStatus.EXPIRED;
+                    else if (differenceInDays < 2) foodStatus = FoodStatus.ALMOST_EXPIRED;
+                    else if (differenceInDays < 4) foodStatus = FoodStatus.EXPIRING;
+                    else foodStatus = FoodStatus.FRESH;
                     return new ItemDto(item.getId(), item.getProduct().getId(), item.getProduct().getName(), item.getExpirationDate(), item.getDescription(), item.getCount(), foodStatus);
                 })
                 .collect(Collectors.toList());
@@ -52,7 +52,20 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public void removeItem(int id) {
-        itemRepository.deleteById(id);
+    public int removeItems(ItemDto itemDto) {
+        assert itemDto.id() != null;
+        return itemRepository.findById(itemDto.id())
+                .map(item -> {
+                    final int itemsLeft = item.getCount() - itemDto.count();
+                    if (itemsLeft > 0) {
+                        item.setCount(itemsLeft);
+                        itemRepository.save(item);
+                        return itemDto.count();
+                    } else {
+                        itemRepository.deleteById(itemDto.id());
+                        return item.getCount();
+                    }
+                })
+                .orElse(0);
     }
 }
