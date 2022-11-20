@@ -6,6 +6,7 @@ import com.shelfy.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -13,6 +14,15 @@ public class ProductServiceImpl implements ProductService {
 
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
+    }
+
+    @Override
+    public Product getProduct(int id) {
+        Optional<Product> optionalProduct = productRepository.findById(id);
+        if(optionalProduct.isEmpty()){
+            throw new IllegalArgumentException("Product id doesnt exist");
+        }
+        return optionalProduct.get();
     }
 
     @Override
