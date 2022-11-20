@@ -4,10 +4,11 @@ import com.shelfy.model.Category;
 import com.shelfy.service.CategoryService;
 import com.shelfy.service.ItemService;
 import com.shelfy.service.ProductService;
+import com.shelfy.service.ProductStatisticService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.event.EventListener;
 
 import java.time.LocalDate;
@@ -18,13 +19,16 @@ public class ShelfyApplication {
     private final CategoryService categoryService;
     private final ProductService productService;
     private final ItemService itemService;
+    private final ProductStatisticService productStatisticService;
 
     public ShelfyApplication(CategoryService categoryService,
                              ProductService productService,
-                             ItemService itemService) {
+                             ItemService itemService,
+                             ProductStatisticService productStatisticService) {
         this.categoryService = categoryService;
         this.productService = productService;
         this.itemService = itemService;
+        this.productStatisticService = productStatisticService;
     }
 
     public static void main(String[] args) {
@@ -66,6 +70,13 @@ public class ShelfyApplication {
         itemService.addItem(1, LocalDate.parse("2022-11-17"), "Milk \"Prosto od krowy\"", 1);
         itemService.addItem(18, LocalDate.parse("2023-06-20"), "Brown rice", 4);
         itemService.addItem(10, LocalDate.parse("2022-11-20"), "Banana from abu zabi", 1);
+
+        productStatisticService.addProductStatistic(1, 3, true);
+        productStatisticService.addProductStatistic(1, 2, true);
+        productStatisticService.addProductStatistic(1, 1, false);
+        productStatisticService.addProductStatistic(1, 6, false);
+        productStatisticService.addProductStatistic(2, 3, true);
+        productStatisticService.addProductStatistic(2, 2, true);
     }
 
 }
