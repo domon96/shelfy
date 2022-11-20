@@ -88,7 +88,7 @@ public class ShelfyApplication {
     }
 
     private void addProductStatistics(int id, String date, boolean wasEaten, int items) {
-        productStatisticsService.addProductStatistic(new ItemDto(1, id, "", LocalDate.parse(date), "", 0, null), wasEaten, items);
+        productStatisticsService.addProductStatistics(new ItemDto(1, id, "", LocalDate.parse(date), "", 0, null), wasEaten, items);
     }
 
 }

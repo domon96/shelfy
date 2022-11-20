@@ -36,6 +36,6 @@ public class ItemController {
     @PutMapping
     public void removeItem(@RequestBody ItemDto itemDto, @RequestParam boolean wasEaten) {
         final int itemsToRemove = itemService.removeItems(itemDto);
-        productStatisticsService.addProductStatistic(itemDto, wasEaten, itemsToRemove);
+        productStatisticsService.addProductStatistics(itemDto, wasEaten, itemsToRemove);
     }
 }
